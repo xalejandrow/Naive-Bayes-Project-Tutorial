@@ -15,7 +15,8 @@ from sklearn.metrics import classification_report
 import pickle
 
 #0.
-df_raw = pd.read_csv('https://raw.githubusercontent.com/4GeeksAcademy/naive-bayes-project-tutorial/main/playstore_reviews_dataset.csv')
+#df_raw = pd.read_csv('https://raw.githubusercontent.com/4GeeksAcademy/naive-bayes-project-tutorial/main/playstore_reviews_dataset.csv')
+df_raw = pd.read_csv('../data/raw/playstore_reviews_dataset.csv')
 #1. Transform
 df_transf = df_raw.copy()
 df_transf = df_transf.drop('package_name', axis=1)
@@ -36,4 +37,4 @@ gs_clf_3 = RandomizedSearchCV(clf_3, parameters, n_iter = n_iter_search)
 gs_clf_3.fit(X_train, y_train)
 best_model = gs_clf_3.best_estimator_
 #5. Save best model
-pickle.dump(best_model, open('../models/best_model.pickle', 'wb'))
+pickle.dump(best_model, open('../models/best_model.pkl', 'wb'))
